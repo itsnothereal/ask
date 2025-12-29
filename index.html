@@ -1,112 +1,146 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Yeni Yıla Aşk</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #ff1a1a;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+<meta charset="UTF-8">
+<title>Yeni Yıla Aşk</title>
 
-        .container {
-            max-width: 900px;
-            text-align: center;
-            padding: 40px;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        h1 {
-            font-size: 64px;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-            animation: glow 2.5s infinite alternate;
-        }
+    body {
+        background: black;
+        overflow: hidden;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #ff1a1a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-        p {
-            font-size: 22px;
-            line-height: 1.8;
-            margin: 25px 0;
-            animation: glowSoft 3s infinite alternate;
-        }
+    /* Kalpler */
+    .heart {
+        position: absolute;
+        color: #ff1a1a;
+        font-size: 18px;
+        animation: floatUp 8s linear infinite;
+        opacity: 0.7;
+    }
 
-        .quote {
-            font-style: italic;
-            opacity: 0.95;
+    @keyframes floatUp {
+        0% {
+            transform: translateY(100vh) scale(0.8);
+            opacity: 0;
         }
+        20% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-10vh) scale(1.4);
+            opacity: 0;
+        }
+    }
 
-        .divider {
-            width: 140px;
-            height: 2px;
-            background-color: #ff1a1a;
-            margin: 35px auto;
-            box-shadow: 0 0 10px #ff1a1a;
-        }
+    .container {
+        text-align: center;
+        max-width: 900px;
+        z-index: 2;
+    }
 
-        /* Parlama animasyonları */
-        @keyframes glow {
-            from {
-                text-shadow: 
-                    0 0 10px #ff1a1a,
-                    0 0 20px #ff1a1a,
-                    0 0 40px #ff1a1a;
-            }
-            to {
-                text-shadow: 
-                    0 0 20px #ff4d4d,
-                    0 0 40px #ff4d4d,
-                    0 0 70px #ff4d4d;
-            }
-        }
+    h1 {
+        font-size: 72px;
+        letter-spacing: 4px;
+        margin-bottom: 50px;
+        animation: glowTitle 2s infinite alternate;
+    }
 
-        @keyframes glowSoft {
-            from {
-                text-shadow: 0 0 8px #ff1a1a;
-            }
-            to {
-                text-shadow: 0 0 18px #ff4d4d;
-            }
+    .lines {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+    }
+
+    .line {
+        width: 700px;
+        text-align: center;
+        animation: glowText 3s infinite alternate;
+    }
+
+    .big {
+        font-size: 26px;
+    }
+
+    .small {
+        font-size: 20px;
+        opacity: 0.95;
+    }
+
+    @keyframes glowTitle {
+        from {
+            text-shadow: 0 0 20px #ff1a1a, 0 0 40px #ff1a1a;
         }
-    </style>
+        to {
+            text-shadow: 0 0 40px #ff4d4d, 0 0 80px #ff4d4d;
+        }
+    }
+
+    @keyframes glowText {
+        from {
+            text-shadow: 0 0 10px #ff1a1a;
+        }
+        to {
+            text-shadow: 0 0 25px #ff4d4d;
+        }
+    }
+</style>
 </head>
+
 <body>
 
 <div class="container">
-    <h1>YENİ YILA SENİNLE</h1>
+    <h1>YIL BAŞI NİSANDA BAŞLADII!!</h1>
 
-    <div class="divider"></div>
+    <div class="lines">
+        <div class="line big">
+            Takvimler değişti ama kalbimin yönü hiç şaşmadı.
+        </div>
 
-    <p>
-        Takvimler değişirken,<br>
-        kalbimin adresi aynı kaldı.
-    </p>
+        <div class="line small">
+            Yeni yıl başka bir sayfa değil, seninle aynı cümle.
+        </div>
 
-    <p class="quote">
-        “Yeni yıl dileğim değil artık,<br>
-        sen zaten gerçekleşmiş halisin.”
-    </p>
+        <div class="line big">
+            Saat on ikide dilek tutulur derler, ben adını seçtim.
+        </div>
 
-    <p>
-        Saat on ikiyi vurduğunda,<br>
-        herkes bir dilek tutar…<br>
-        ben sadece adını fısıldarım.
-    </p>
-
-    <div class="divider"></div>
-
-    <p>
-        Yeni yıl, yeni umutlar…<br>
-        ama aynı aşk,<br>
-        aynı gözler,<br>
-        aynı sen.
-    </p>
+        <div class="line small">
+            Aynı çizgide, aynı aşkta, aynı kalpte.
+        </div>
+    </div>
 </div>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (12 + Math.random() * 20) + "px";
+        heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 12000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
 
 </body>
 </html>
